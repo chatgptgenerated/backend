@@ -11,11 +11,11 @@ namespace backend.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly AppDbContext db;
+    private readonly AppDbContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AuthController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext _db)
+    public AuthController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext db)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -29,12 +29,18 @@ public class AuthController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
+        Guid ProfileToken = Guid.NewGuid();
+
+        String token = ProfileToken.ToString().Substring(0, 8);
+
         var user = new ApplicationUser
         {
             UserName = model.Email,
+            ProfileToken = token,
             Email = model.Email,
             FirstName = model.FirstName,
             LastName = model.LastName,
+            PreferedLanguage = model.PreferedLanguage
         };
 
         var result = await _userManager.CreateAsync(user, model.Password);

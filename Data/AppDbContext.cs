@@ -9,6 +9,15 @@ public class AppDbContext: IdentityDbContext<ApplicationUser> {
             : base(options)
         {
         }
-    public DbSet<Employee> Employees {get; set;}
+    
     public DbSet<ApplicationUser> ApplicationUsers {get; set;}
+    public DbSet<AidHelpee> AidHelpee { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelbuilder)
+    {
+        base.OnModelCreating(modelbuilder);
+
+        modelbuilder.Entity<AidHelpee>()
+            .HasKey(ab => new { ab.Id, ab.HelpingProfileId, ab.HelpedProfileId });
+    }
 }
