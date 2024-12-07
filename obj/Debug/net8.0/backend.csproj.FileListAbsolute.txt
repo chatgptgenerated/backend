@@ -1,10 +1,3 @@
-/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.csproj.AssemblyReference.cache
-/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.GeneratedMSBuildEditorConfig.editorconfig
-/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.AssemblyInfoInputs.cache
-/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
-/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.csproj.CoreCompileInputs.cache
-/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.MvcApplicationPartsAssemblyInfo.cs
-/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.MvcApplicationPartsAssemblyInfo.cache
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/appsettings.Development.json
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/appsettings.json
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/backend
@@ -13,6 +6,7 @@
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/backend.dll
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/backend.pdb
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/Humanizer.dll
+/home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/Microsoft.Build.Locator.dll
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll
@@ -118,6 +112,14 @@
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
+/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.csproj.AssemblyReference.cache
+/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.GeneratedMSBuildEditorConfig.editorconfig
+/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.AssemblyInfoInputs.cache
+/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
+/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.csproj.CoreCompileInputs.cache
+/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.MvcApplicationPartsAssemblyInfo.cs
+/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.MvcApplicationPartsAssemblyInfo.cache
+/home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.sourcelink.json
 /home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/staticwebassets.build.json
 /home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/staticwebassets.development.json
 /home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/staticwebassets/msbuild.backend.Microsoft.AspNetCore.StaticWebAssets.props
@@ -132,4 +134,3 @@
 /home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.pdb
 /home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/backend.genruntimeconfig.cache
 /home/alexmiclea/Documents/hackitall_repos/backend/obj/Debug/net8.0/ref/backend.dll
-/home/alexmiclea/Documents/hackitall_repos/backend/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
