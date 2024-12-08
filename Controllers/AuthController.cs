@@ -91,9 +91,14 @@ public class AuthController : ControllerBase
         
         if (User.Identity.IsAuthenticated) {
             Console.WriteLine(User.Identity.Name);
-            return Ok(new { Message = "yay" });
+            return Ok(new { Message = _userManager.GetUserId(User) });
         } else {
             return Ok(new { Message = "nay" }); 
         }
+    }
+
+    [HttpGet("getId")]
+    public async Task<IActionResult> GetId() {
+        return Ok(_userManager.GetUserId(User));
     }
 }
