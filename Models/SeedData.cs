@@ -140,6 +140,16 @@ namespace backend.Models
                     );
                 }
 
+                if(!context.AidHelpee.Any()) {
+                    context.AidHelpee.AddRange(
+                        new AidHelpee
+                        {
+                            HelpingProfileId = "helper_acc_id",
+                            HelpedProfileId = "helpee_acc_id"
+                        }
+                    );
+                }
+
                 context.SaveChanges();
             }
         }

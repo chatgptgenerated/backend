@@ -28,8 +28,7 @@ public class HelperController : ControllerBase
 
     [HttpPost("AddHelp")]
     // TODO see if helpee belongs here
-    [Authorize(Roles = "Helper,Admin")]
-    public IActionResult AddHelp(string HelpeeToken)
+    public IActionResult AddHelp([FromQuery] string HelpeeToken)
     {
 
         var helpeeWithToken = _db.Users.Where(us => us.ProfileToken == HelpeeToken);
@@ -55,8 +54,7 @@ public class HelperController : ControllerBase
 
     [HttpPost("RemoveHelp")]
     // TODO see if helpee belongs here
-    [Authorize(Roles = "Helper,Admin")]
-    public IActionResult RemoveHelp(string HelpeeToken)
+    public IActionResult RemoveHelp([FromQuery] string HelpeeToken)
     {
 
         var helpeeWithToken = _db.Users.Where(us => us.ProfileToken == HelpeeToken);
@@ -82,8 +80,7 @@ public class HelperController : ControllerBase
 
     [HttpGet("AllHelped")]
     // TODO see if helpee belongs here
-    [Authorize(Roles = "Helper,Admin")]
-    public IActionResult GetAllHelped(string HelperId)
+    public IActionResult GetAllHelped([FromQuery] string HelperId)
     {
         // TOOD get first and last name
         var helpeeIds = _db.AidHelpee.Where(x => x.HelpingProfileId == HelperId).Select(x => new {FullName = x.HelpedProfile.FirstName + " " + x.HelpedProfile.LastName}).ToArray();
