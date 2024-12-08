@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using backend.Models;
 
 namespace backend.Data;
-public class FileDbContext: IdentityDbContext<ApplicationUser> {
+public class FileDbContext : DbContext {
 
     public FileDbContext(DbContextOptions<FileDbContext> options)
             : base(options)

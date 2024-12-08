@@ -1,0 +1,2 @@
+dotnet ef migrations add init --context FileDbContext && dotnet ef database update --context FileDbContext
+dotnet ef migrations add init2 --context AppDbContext && dotnet ef database update --context AppDbContext
