@@ -12,8 +12,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241207211422_init")]
-    partial class init
+    [Migration("20241207235709_init344")]
+    partial class init344
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -157,6 +157,29 @@ namespace backend.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("backend.Models.AidHelpee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("HelpingProfileId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("HelpedProfileId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id", "HelpingProfileId", "HelpedProfileId");
+
+                    b.HasIndex("HelpedProfileId");
+
+                    b.HasIndex("HelpingProfileId");
+
+                    b.ToTable("AidHelpee");
+                });
+
             modelBuilder.Entity("backend.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -206,6 +229,14 @@ namespace backend.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("PreferedLanguage")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProfileToken")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
@@ -278,6 +309,25 @@ namespace backend.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("backend.Models.AidHelpee", b =>
+                {
+                    b.HasOne("backend.Models.ApplicationUser", "HelpedProfile")
+                        .WithMany()
+                        .HasForeignKey("HelpedProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend.Models.ApplicationUser", "HelpingProfile")
+                        .WithMany()
+                        .HasForeignKey("HelpingProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HelpedProfile");
+
+                    b.Navigation("HelpingProfile");
                 });
 #pragma warning restore 612, 618
         }

@@ -26,11 +26,14 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto model)
     {
-        if (!ModelState.IsValid)
+        Console.WriteLine("am intrat in register");
+        if (!ModelState.IsValid){
+            Console.WriteLine("ceva nu e bine!");
             return BadRequest(ModelState);
+        }
 
+        Console.WriteLine("am trecut la guid");
         Guid ProfileToken = Guid.NewGuid();
-
         String token = ProfileToken.ToString().Substring(0, 8);
 
         var user = new ApplicationUser
@@ -55,20 +58,23 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto model)
     {
-        if (!ModelState.IsValid)
+        Console.WriteLine("Am intrat in Login");
+        if (!ModelState.IsValid){
+            Console.WriteLine("Am intrat in modelstate");
             return BadRequest(ModelState);
+        }
 
         Console.WriteLine(model.Email);
         Console.WriteLine(model.Password);
-        Console.WriteLine(model.Email);
+        Console.WriteLine(model.RememberMe);
 
+        Console.WriteLine("before signin");
         var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
+        
         if (!result.Succeeded)
             return Unauthorized(new { Message = "Invalid login attempt" });
 
-        else{
-        }
         return Ok(new { Message = "Logged in successfully" });
     }
 
@@ -81,13 +87,13 @@ public class AuthController : ControllerBase
 
     // TODO we can refactor into a more general thing
     [HttpGet("getIdentity")]
-    public String GetIdentity(){
+    public async Task<IActionResult> GetIdentity(){
         
         if (User.Identity.IsAuthenticated) {
             Console.WriteLine(User.Identity.Name);
-            return "yea"; 
+            return Ok(new { Message = "yay" });
         } else {
-            return "nay"; 
+            return Ok(new { Message = "nay" }); 
         }
     }
 }

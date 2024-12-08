@@ -26,7 +26,7 @@ public class HelperController : ControllerBase
 
     // TODO test
 
-    [HttpPost]
+    [HttpPost("AddHelp")]
     // TODO see if helpee belongs here
     [Authorize(Roles = "Helper,Admin")]
     public IActionResult AddHelp(string HelpeeToken)
@@ -53,7 +53,7 @@ public class HelperController : ControllerBase
         return BadRequest();
     }
 
-    [HttpPost]
+    [HttpPost("RemoveHelp")]
     // TODO see if helpee belongs here
     [Authorize(Roles = "Helper,Admin")]
     public IActionResult RemoveHelp(string HelpeeToken)

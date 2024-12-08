@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class init344 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,6 +33,8 @@ namespace backend.Migrations
                     Id = table.Column<string>(type: "text", nullable: false),
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
+                    ProfileToken = table.Column<string>(type: "text", nullable: false),
+                    PreferedLanguage = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -70,6 +72,32 @@ namespace backend.Migrations
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AidHelpee",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    HelpingProfileId = table.Column<string>(type: "text", nullable: false),
+                    HelpedProfileId = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AidHelpee", x => new { x.Id, x.HelpingProfileId, x.HelpedProfileId });
+                    table.ForeignKey(
+                        name: "FK_AidHelpee_AspNetUsers_HelpedProfileId",
+                        column: x => x.HelpedProfileId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AidHelpee_AspNetUsers_HelpingProfileId",
+                        column: x => x.HelpingProfileId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -160,6 +188,16 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AidHelpee_HelpedProfileId",
+                table: "AidHelpee",
+                column: "HelpedProfileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AidHelpee_HelpingProfileId",
+                table: "AidHelpee",
+                column: "HelpingProfileId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
@@ -200,6 +238,9 @@ namespace backend.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AidHelpee");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 

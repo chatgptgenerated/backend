@@ -20,6 +20,14 @@ namespace backend.Models
 
                 if (!context.Users.Any())
                 {
+
+                    Guid ProfileToken = Guid.NewGuid();
+                    String token1 = ProfileToken.ToString().Substring(0, 8);
+                    ProfileToken = Guid.NewGuid();
+                    String token2 = ProfileToken.ToString().Substring(0, 8);
+                    ProfileToken = Guid.NewGuid();
+                    String token3 = ProfileToken.ToString().Substring(0, 8);
+
                     var hasher = new PasswordHasher<ApplicationUser>();
                     context.Users.AddRange(
                         new ApplicationUser
@@ -32,6 +40,8 @@ namespace backend.Models
                             Email = "admin@test.com",
                             NormalizedUserName = "ADMIN@TEST.COM",
                             PasswordHash = hasher.HashPassword(null, "Admin1!"),
+                            ProfileToken = token1,
+                            PreferedLanguage = "en",
                             FirstName = "Admin",
                             LastName = "Adminescu"
                         },
@@ -46,6 +56,8 @@ namespace backend.Models
                             NormalizedUserName = "HELPER@TEST.COM",
                             PasswordHash = hasher.HashPassword(null, "Helper1!"),
                             FirstName = "Helper",
+                            ProfileToken = token2,
+                            PreferedLanguage = "en",
                             LastName = "Helperescu",
                         },
                         new ApplicationUser
@@ -59,6 +71,8 @@ namespace backend.Models
                             NormalizedUserName = "HELPEE@TEST.COM",
                             PasswordHash = hasher.HashPassword(null, "Helpee1!"),
                             FirstName = "Helpee",
+                            ProfileToken = token3,
+                            PreferedLanguage = "en",
                             LastName = "Helpescu",
                         }
                     );

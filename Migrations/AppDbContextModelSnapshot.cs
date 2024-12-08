@@ -154,7 +154,7 @@ namespace backend.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("backend.Models.AidRelationship", b =>
+            modelBuilder.Entity("backend.Models.AidHelpee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -162,19 +162,19 @@ namespace backend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("HelpedProfileId")
-                        .HasColumnType("text");
-
                     b.Property<string>("HelpingProfileId")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<string>("HelpedProfileId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id", "HelpingProfileId", "HelpedProfileId");
 
                     b.HasIndex("HelpedProfileId");
 
                     b.HasIndex("HelpingProfileId");
 
-                    b.ToTable("AidRelationships");
+                    b.ToTable("AidHelpee");
                 });
 
             modelBuilder.Entity("backend.Models.ApplicationUser", b =>
@@ -226,6 +226,14 @@ namespace backend.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("PreferedLanguage")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProfileToken")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
@@ -300,15 +308,19 @@ namespace backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.Models.AidRelationship", b =>
+            modelBuilder.Entity("backend.Models.AidHelpee", b =>
                 {
                     b.HasOne("backend.Models.ApplicationUser", "HelpedProfile")
                         .WithMany()
-                        .HasForeignKey("HelpedProfileId");
+                        .HasForeignKey("HelpedProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("backend.Models.ApplicationUser", "HelpingProfile")
                         .WithMany()
-                        .HasForeignKey("HelpingProfileId");
+                        .HasForeignKey("HelpingProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("HelpedProfile");
 
