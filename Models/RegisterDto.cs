@@ -24,4 +24,5 @@ public class RegisterDto
 
     [Required]
     public string? PreferedLanguage { get; set; }
+    public string? selectedRole {get; set;}
 }

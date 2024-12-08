@@ -56,6 +56,45 @@ namespace backend.Migrations.AppDb
                 });
 
             migrationBuilder.CreateTable(
+                name: "FileNotebook",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false),
+                    FileId = table.Column<int>(type: "integer", nullable: false),
+                    NotebookId = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileNotebook", x => new { x.Id, x.FileId, x.NotebookId });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HelpeeNotebook",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false),
+                    HelpeeId = table.Column<string>(type: "text", nullable: false),
+                    NotebookId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HelpeeNotebook", x => new { x.Id, x.HelpeeId, x.NotebookId });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notebooks",
+                columns: table => new
+                {
+                    NotebookId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NotebookName = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notebooks", x => x.NotebookId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -255,6 +294,15 @@ namespace backend.Migrations.AppDb
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "FileNotebook");
+
+            migrationBuilder.DropTable(
+                name: "HelpeeNotebook");
+
+            migrationBuilder.DropTable(
+                name: "Notebooks");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

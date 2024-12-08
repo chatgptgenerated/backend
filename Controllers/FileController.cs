@@ -31,7 +31,7 @@ public class FileController : ControllerBase
     // TODO add uploader & destination to table in appDbContext
     [HttpPost("AddFile")]
     // TODO see if helpee belongs here
-    public async Task<IActionResult> AddFile([FromForm] IFormFile file)
+    public async Task<IActionResult> AddFile([FromForm] IFormFile file, [FromForm] string HelpeeId)
     {
         Console.WriteLine("am intrat");
         Console.WriteLine(file);
@@ -56,6 +56,8 @@ public class FileController : ControllerBase
 
         _db.FileModels.Add(fileModel);
         _db.SaveChanges();
+
+        // add relation to file - helpee
 
         return Ok(new { Message = "File uploaded successfully.", FileName = file.FileName });
         

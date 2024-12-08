@@ -43,7 +43,7 @@ public class AuthController : ControllerBase
             Email = model.Email,
             FirstName = model.FirstName,
             LastName = model.LastName,
-            PreferedLanguage = model.PreferedLanguage
+            PreferedLanguage = model.PreferedLanguage,
         };
 
         var result = await _userManager.CreateAsync(user, model.Password);

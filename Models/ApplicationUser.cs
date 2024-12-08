@@ -17,5 +17,6 @@ namespace backend.Models
 
         [Required]
         public string? PreferedLanguage {get; set;}
+
     }
 }

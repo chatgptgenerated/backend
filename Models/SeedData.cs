@@ -99,6 +99,47 @@ namespace backend.Models
                     );
                 }
 
+                if (!context.Notebooks.Any()) {
+                    context.Notebooks.AddRange(
+                        new Notebook
+                        {
+                            NotebookId = 1,
+                            NotebookName = "Notebook 1"
+                        },
+                        new Notebook
+                        {
+                            NotebookId = 2,
+                            NotebookName = "Notebook 2"
+                        },
+                        new Notebook
+                        {
+                            NotebookId = 3,
+                            NotebookName = "Notebook 3"
+                        }
+                    );
+
+                }
+
+                if (!context.HelpeeNotebook.Any()){
+                    context.HelpeeNotebook.AddRange(
+                        new HelpeeNotebook
+                        {
+                            NotebookId = 1,
+                            HelpeeId = "helpee_acc_id"
+                        },
+                        new HelpeeNotebook
+                        {
+                            NotebookId = 2,
+                            HelpeeId = "helpee_acc_id"
+                        },
+                        new HelpeeNotebook
+                        {
+                            NotebookId = 3,
+                            HelpeeId = "helpee_acc_id"
+                        }
+                    );
+                }
+
                 context.SaveChanges();
             }
         }

@@ -79,4 +79,15 @@ public class HelperController : ControllerBase
 
         return BadRequest();
     }
+
+    [HttpGet("AllHelped")]
+    // TODO see if helpee belongs here
+    [Authorize(Roles = "Helper,Admin")]
+    public IActionResult GetAllHelped(string HelperId)
+    {
+        // TOOD get first and last name
+        var helpeeIds = _db.AidHelpee.Where(x => x.HelpingProfileId == HelperId).Select(x => new {FullName = x.HelpedProfile.FirstName + " " + x.HelpedProfile.LastName}).ToArray();
+
+        return Ok(helpeeIds);
+    }
 }

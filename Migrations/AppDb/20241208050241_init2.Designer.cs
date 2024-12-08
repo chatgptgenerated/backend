@@ -12,7 +12,7 @@ using backend.Data;
 namespace backend.Migrations.AppDb
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241208042647_init2")]
+    [Migration("20241208050241_init2")]
     partial class init2
     {
         /// <inheritdoc />
@@ -258,6 +258,55 @@ namespace backend.Migrations.AppDb
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("backend.Models.FileNotebook", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("FileId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("NotebookId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id", "FileId", "NotebookId");
+
+                    b.ToTable("FileNotebook");
+                });
+
+            modelBuilder.Entity("backend.Models.HelpeeNotebook", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("HelpeeId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("NotebookId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id", "HelpeeId", "NotebookId");
+
+                    b.ToTable("HelpeeNotebook");
+                });
+
+            modelBuilder.Entity("backend.Models.Notebook", b =>
+                {
+                    b.Property<int>("NotebookId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("NotebookId"));
+
+                    b.Property<string>("NotebookName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("NotebookId");
+
+                    b.ToTable("Notebooks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -5,8 +5,6 @@ namespace backend.Models
 {
     public class FileModel
     {
-        // TOOD add owner and shit
-    
     [Key]
     public int Id { get; set; }
     public string Name { get; set; }
